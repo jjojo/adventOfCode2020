@@ -1,0 +1,26 @@
+{
+  "name": "adventofcode2020",
+  "version": "1.0.0",
+  "description": "Advent of code 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./**/*.test.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjojo/adventOfCode2020.git"
+  },
+  "author": "Jonas Johansson (jjojo@github)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjojo/adventOfCode2020/issues"
+  },
+  "homepage": "https://github.com/jjojo/adventOfCode2020#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
+  },
+  "dependencies": {
+    "readline-promise": "^1.0.4"
+  }
+}
