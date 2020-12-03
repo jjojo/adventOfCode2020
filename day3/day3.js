@@ -1,11 +1,11 @@
-const maneuver = (rowstep) => (trees, line, row) => {
+const checkForTree = (rowstep) => (trees, line, row) => {
   if (row === 0) return [];
   return line[(row * rowstep) % line.length] === "#"
     ? trees.concat("#")
     : trees;
 };
 
-part1 = (input) => input.reduce(maneuver(3), []).length;
+part1 = (input) => input.reduce(checkForTree(3), []).length;
 
 const part2 = (input) => {
   const maneuvers = [
@@ -17,7 +17,7 @@ const part2 = (input) => {
   ];
 
   const countTrees = (rowStep, colStep) =>
-    input.filter((_, i) => i % colStep === 0).reduce(maneuver(rowStep), [])
+    input.filter((_, i) => i % colStep === 0).reduce(checkForTree(rowStep), [])
       .length;
 
   return maneuvers
