@@ -21,11 +21,7 @@ describe("Day 4", () => {
 
   describe("Part 2", () => {
     it("Should return correct answer for my input", async () => {
-      //const myInput = await readPassports("./day4/valid-test-input-part2");
-      // const myInput = await readPassports("./day4/invalid-test-input-part2");
       const myInput = await readPassports("./day4/input-part1");
-      //const myInput = await readPassports("./day4/test-input");
-
       const result = part2(myInput);
       console.log(result);
       expect(result).to.equal(179);
