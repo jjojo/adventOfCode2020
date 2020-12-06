@@ -60,6 +60,7 @@ readPasswordPoliciesV2 = readLines(toPasswordPolicyV2);
 
 module.exports = {
   readLines,
+  readMultipleLines,
   readInts,
   readPasswordPoliciesV1,
   readPasswordPoliciesV2,
