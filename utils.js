@@ -41,6 +41,30 @@ const readPassports = async (pathToFile) => {
   return readPassportChunks.map(parsePassports);
 };
 
+const toBagRules = (line) => {
+  const rules = line
+    .replace(/bags|bag/g, "")
+    .split("contain")
+    .map((s) =>
+      s.replace("no", "0").replace(" .", "").replace(" ,", ",").trim()
+    );
+  return {
+    [rules[0]]: rules.slice(1, rules.length).reduce((obj, contains) => {
+      const bagAndNumber = contains
+        .split(",")
+        .map((s) => s.trim().split(/ (.+)/))
+        .map((arr) => ({ [arr[1]]: arr[0] }))
+        .reduce((obj, subObj) => ({ ...obj, ...subObj }), {});
+      return { ...obj, ...bagAndNumber };
+    }, {}),
+  };
+};
+
+const toOps = (line) => ({
+  op: line.split(" ")[0],
+  value: parseInt(line.split(" ")[1]),
+});
+
 const readLines = (formatter = (x) => x) => async (pathToFile) =>
   await readInterface(pathToFile).map(formatter);
 
@@ -57,6 +81,8 @@ const readMultipleLines = (stopInput = "") => async (pathToFile) => {
 readInts = readLines(toInt);
 readPasswordPoliciesV1 = readLines(toPasswordPolicyV1);
 readPasswordPoliciesV2 = readLines(toPasswordPolicyV2);
+readBagRules = readLines(toBagRules);
+readOperations = readLines(toOps);
 
 module.exports = {
   readLines,
@@ -65,4 +91,6 @@ module.exports = {
   readPasswordPoliciesV1,
   readPasswordPoliciesV2,
   readPassports,
+  readBagRules,
+  readOperations,
 };

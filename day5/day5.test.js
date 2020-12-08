@@ -23,7 +23,7 @@ describe("Day 5", () => {
     it("Should return correct answer for my input", async () => {
       const input = await readLines()("./day5/input-part1");
       const result = part2(input);
-      console.log("result part 2:", result);
+      //console.log("result part 2:", result);
       expect(result).to.equal(640);
     });
   });
